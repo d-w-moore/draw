@@ -1,2 +1,2 @@
-# new title
+# title
 ![Drawing](./Docker_Example.svg)
