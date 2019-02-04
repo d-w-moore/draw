@@ -1,0 +1,22 @@
++-------------------------------+        +------------------+        +--------------------------------------+
+|                               |  (1)   |                  |  (2)   |                                      |
+| docker start -it <imagename>  +---O--->+ ^P ^Q to detach  +---O--->+   docker attach <instance-name^      |
+|                               |   ^    |                  |        |                  | <SHA|unique-part> |
++-------------------------------+   |    +------------------+        |                                      |
+                                    |                                +---------------+----------------------+
+                                    |                                                |
+                                    | (1) -  commands you issue here will change the |
+                                    |        container but may be 'docker commit'ed  |
+                                    |        and thus saved in a new image           |
+                                    |        (Entering into a Dockerfile and repeat  |
+                                    |         /iterate the 'docker build' cycle will |
+                                    |         make for reproducible images           |
+                                    +------------------------------------------------+
+
+                                      (2) -  docker ps to get instance-name
+                                          -  docker rename to choose a different
+                                               (less arbitrary name)
+                                          -  docker stop / start (be careful!
+                                                this sends signals to processes in
+                                                the  container
+
